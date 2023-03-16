@@ -1,0 +1,121 @@
+<!-- <p>
+  <mat-toolbar>
+    <div>
+      <a routerLink="/home-view" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>home</mat-icon>
+      </a>
+    </div>
+    <span>Foodie</span>
+    <span class="example-spacer"></span>
+    <div *ngIf="!userService.isloggedIn()">
+      <a routerLink="/login-view" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        login
+      </a>
+    </div>
+    <div *ngIf="userService.isloggedIn()">
+      <img class="circular--portrait" src='data:image/jpeg;base64,{{userDetails.file}}' alt="">
+    </div>
+    <span>&nbsp;&nbsp;</span>
+    <div *ngIf="userService.isloggedIn()">
+      <a (click)="logout()" mat-icon-button class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon">
+        logout
+      </a>
+    </div>
+    <span>&nbsp;&nbsp;</span>
+    <div *ngIf="!userService.isloggedIn()">
+      <a routerLink="/signup-view" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with share icon">
+        signup
+      </a>
+    </div>
+    <span>&nbsp;&nbsp;</span>
+    <div *ngIf="userService.isloggedIn() && userService.rollCheck()">
+      
+      <a routerLink="/register-restaurant" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with share icon">
+        RR
+      </a>
+      <a routerLink="/cart-view" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with share icon">
+        cart
+      </a>
+    </div>
+  </mat-toolbar>
+</p> -->
+<!-- <mat-toolbar>
+
+  <span class="example-spacer"><img src="../../assets/photos/logo.jpg" alt="" height="100px" width="100px">
+    <a routerLink="/home-view"><b style="  color:rgb(242, 247, 247);
+      ">Foodie</b></a></span>
+  <div>
+    <button *ngIf="userService.isloggedIn() && userService.rollCheck()" class="cart">
+      <a routerLink="/cart-view" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with share icon"><mat-icon>shopping_cart</mat-icon></a>
+    </button>
+    <button *ngIf="userService.isloggedIn() && userService.rollCheck()" class="cart">
+      <a routerLink="/fav-view" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with share icon"><mat-icon>favorite</mat-icon></a>
+    </button>
+    <button *ngIf="userService.isloggedIn() && userService.rollCheckUser()" class="register">
+      <a routerLink="/register-restaurant" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with share icon">Add Restaurant</a>
+    </button>
+    <button *ngIf="!userService.isloggedIn()" mat-icon-button class="example-icon Login-icon"
+      aria-label="Example icon-button with menu icon">
+      <a routerLink="/login-view" style="  color:rgb(10, 11, 11);
+    ">Login</a>
+    </button>
+    <button *ngIf="!userService.isloggedIn()" mat-icon-button class="example-icon signUp-icon"
+      aria-label="Example icon-button with share icon">
+      <a routerLink="/signup-view" style="  color:rgb(12, 12, 12);
+    ">Signup</a>
+    </button>
+    <button *ngIf="userService.isloggedIn()" mat-icon-button class="example-icon logout-icon"
+      aria-label="Example icon-button with heart icon">
+      <a (click)="logout()" style="color: black;">LogOut</a>
+    </button>
+    <button *ngIf="userService.isloggedIn()">
+      <img class="circular--portrait" src='data:image/jpeg;base64,{{userDetails.file}}' alt="">
+    </button>
+  </div>
+</mat-toolbar> -->
+
+<div class="bg-img">
+  <div class="example-spacer">
+    <a routerLink="/home-view" style="text-decoration: none;" class="foodie">
+      <span><img class=" logo" src="../../assets/photos/logiimg.jpg" alt="" height="100px" width="100px">&nbsp;<b>Foodie</b>
+      </span>
+    </a>
+  </div>
+  <div class="container">
+
+    <div class="topnav">
+
+      <a *ngIf="userService.isloggedIn() && userService.rollCheck()" routerLink="/cart-view" mat-icon-button
+        class="example-icon" aria-label="Example icon-button with share icon"><mat-icon>shopping_cart</mat-icon></a>
+
+
+      <a *ngIf="userService.isloggedIn() && userService.rollCheck()" routerLink="/fav-view" mat-icon-button
+        class="example-icon" aria-label="Example icon-button with share icon"><mat-icon>favorite</mat-icon></a>
+
+
+      <a *ngIf="userService.isloggedIn() && userService.rollCheckUser()" routerLink="/register-restaurant"
+        mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">Add Restaurant</a>
+
+      <a *ngIf="!userService.isloggedIn()" routerLink="/login-view"
+        style="font-weight:500; font-size: x-large; margin-right: 25px;">Login</a>
+
+
+      <a *ngIf="!userService.isloggedIn()" routerLink="/signup-view"
+        style=" font-weight:500; font-size: x-large; margin-right: 25px;">Sign up</a>
+
+      <button *ngIf="userService.isloggedIn()" mat-icon-button aria-label="Example icon-button with heart icon">
+        <a (click)="logout()">LogOut</a>
+      </button>
+      <button *ngIf="userService.isloggedIn()">
+        <img class="circular--portrait" src='data:image/jpeg;base64,{{userDetails.file}}' alt="">
+      </button>
+    </div>
+  </div>
+</div>

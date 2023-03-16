@@ -1,0 +1,88 @@
+version: "3.9"
+#specifies the version of the docker-compose.yml
+
+services:
+
+  eureka-service:
+    image: eureka-service
+    container_name: Eureka-Service
+    build: discoveryServer/
+    networks:
+      - foodieapp-network
+    ports:
+      - "8761:8761"
+    restart: always
+
+  authentication-service:
+   image: authentication-service
+   container_name: Auth-Service
+   build: AuthenticationApp/
+   networks:
+     - foodieapp-network
+   ports:
+     - "9753:9753"
+   depends_on:
+     - user-mysql-service
+   restart: always
+
+  user-mysql-service:
+    image: mysql:5.5
+    ports:
+      - "3306:3306"
+    container_name: mysql_container
+    networks:
+      - foodieapp-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root@123
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root@123
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  admin-service:
+    image: admin-service
+    container_name: Admin-Service
+    build: AdminApp/
+    networks:
+      - foodieapp-network
+    ports:
+      - "8888:8888"
+    depends_on:
+      - mongodb-service
+    restart: always
+
+  user-service:
+    image: user-service
+    container_name: User-Service
+    build: UserApp/
+    networks:
+      - foodieapp-network
+    ports:
+      - "7777:7777"
+    depends_on:
+    - mongodb-service
+    restart: always
+
+  mongodb-service:
+    image: mongo:3.6
+    ports:
+      - "27017:27017"
+    container_name: mongo-foodieapp-container
+    networks:
+      - foodieapp-network
+
+networks:
+  foodieapp-network:
+    driver: bridge
+
+
+
+
+
+
+
+
+
+
+
+
+

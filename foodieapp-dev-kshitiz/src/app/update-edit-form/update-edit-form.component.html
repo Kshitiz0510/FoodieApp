@@ -1,0 +1,39 @@
+<div>
+  <button mat-button color="Danger" (click)="afterClosed()"><mat-icon>highlight_off</mat-icon></button>
+
+  <form [formGroup]="updateMenuForm" (ngSubmit)="sendUpdateMenuData()">
+  <mat-form-field appearance="fill">
+    <mat-label>Menu Id: </mat-label>
+    <input matInput formControlName="itemId" />
+    <mat-hint align="end" *ngIf="itemId?.invalid" aria-readonly="true">Provide Menu Id </mat-hint>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Item Name: </mat-label>
+    <input matInput formControlName="itemName" />
+    <mat-hint align="end" *ngIf="itemName?.invalid">Provide Item Name </mat-hint>
+    <mat-icon></mat-icon>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Item Price: </mat-label>
+    <input matInput formControlName="itemPrice" />
+    <mat-hint align="end" *ngIf="itemPrice?.invalid">Provide Item Price</mat-hint>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Cuisine: </mat-label>
+    <input matInput formControlName="cuisine" />
+    <mat-hint align="end" *ngIf="cuisine?.invalid ">Provide Cuisine name</mat-hint>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Rating: </mat-label>
+    <input matInput formControlName="rating" />
+    <mat-hint align="end" *ngIf="rating?.invalid ">Provide Rating</mat-hint>
+  </mat-form-field>
+  <br>
+  <button mat-button color="secondary" type="submit"><mat-icon>update</mat-icon>
+  </button>
+  </form>
+</div>

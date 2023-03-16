@@ -1,0 +1,144 @@
+/* 
+
+div{
+  margin-left: auto;
+  margin-top: -350px;
+}
+mat-toolbar{ 
+  background-image: url(../../assets/photos/cover.jpg);
+   height: 400px;
+  background-size: cover;
+  padding:10px;
+
+}
+button{
+  margin: 20px;
+  background-color: transparent;
+  border: none;
+}
+a{
+
+  text-decoration: none;
+}
+img{
+  border-radius: 50%;
+  height:50px;
+  width:50px;
+}
+.example-spacer {
+  margin-left:41%;
+
+  font-size: 80px;
+  font-weight:bolder;
+  font-family: italic;
+  letter-spacing: 0.5px;
+}
+.cart{
+  margin-left: -20px;
+}
+.register{
+  margin-left: -20px;
+  margin-right: 40px;
+} */
+img{
+  border-radius: 50%;
+  height:50px;
+  width:50px;
+}
+.logo{
+  border-radius: 50%;
+  height:70px;
+  width:70px;
+  
+}
+.bg-img {
+  /* The image used */
+  background-image: url(../../assets/photos/cover.jpg);
+  
+  background-size: cover;
+  width:100%;
+  display: flex;
+  justify-content: right;
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* Needed to position the navbar */
+  position: relative;
+  
+}
+
+/* Position the navbar container inside the image */
+.container {
+
+  position: absolute;
+  
+  margin-top: 1%;
+  /* margin: 20px; */
+ 
+  width: auto;
+}
+
+/* The navbar */
+.topnav {
+  /* overflow: hidden; */
+  background-color:transparent;
+  
+}
+
+/* Navbar links */
+.topnav a {
+  float: left;
+  color:black;
+  margin: auto;
+  text-align: center;
+  padding-left: 20px;
+  /* padding-top: 5px; */
+  /* padding: 14px 16px; */
+  text-decoration: none;
+  font-size: 18px;
+}
+.topnav button {
+  float: left;
+  color: gray;
+  margin: auto;
+  text-align: center;
+  padding-left: 100px;
+
+  text-decoration: none;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+}
+
+.topnav a:hover {
+  background-color: transparent;
+  color: black;
+}
+/* .topnav button:hover {
+  background-color: #ddd;
+  color: black;
+} */
+mat-icon:hover{
+  background-color:transparent;
+  color: black;
+  
+}
+mat-icon{
+  color: gray;
+  size: 50px;
+}
+.example-spacer{
+  margin-left: auto;
+  margin-top: 8%;
+  margin-right: 42%!important;
+}
+.foodie{
+color:rgb(14, 102, 31);
+font-family: cursive;
+ font-size: 70px; 
+ letter-spacing: 0.5px;
+}

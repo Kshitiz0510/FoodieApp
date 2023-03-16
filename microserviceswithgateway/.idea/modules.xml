@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/microservices/AdminApp/AdminApp.iml" filepath="$PROJECT_DIR$/microservices/AdminApp/AdminApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/AuthenticationApp/AuthenticationApp.iml" filepath="$PROJECT_DIR$/microservices/AuthenticationApp/AuthenticationApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/UserApp/UserApp.iml" filepath="$PROJECT_DIR$/microservices/UserApp/UserApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/discoveryServer/discoveryServer.iml" filepath="$PROJECT_DIR$/microservices/discoveryServer/discoveryServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/gateway/gateway.iml" filepath="$PROJECT_DIR$/microservices/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/mailService/mailService.iml" filepath="$PROJECT_DIR$/microservices/mailService/mailService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/microservices.iml" filepath="$PROJECT_DIR$/microservices/microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/microserviceswithgateway.iml" filepath="$PROJECT_DIR$/.idea/microserviceswithgateway.iml" />
+    </modules>
+  </component>
+</project>

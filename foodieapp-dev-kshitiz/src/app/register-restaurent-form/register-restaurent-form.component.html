@@ -1,0 +1,49 @@
+<app-header></app-header>
+<br>
+ <br>
+ <br>
+<mat-card [class.mat-elevation-z6]="true">
+    <div>
+        <form [formGroup]="registerForm" (ngSubmit)="sendRegisterData()">
+            <h1>Register Form</h1>
+            <mat-form-field appearance="fill" class="emailId">
+                <input matInput placeholder="EmailId" type="text" formControlName="emailId" />
+                <mat-error *ngIf="emailId?.errors?.['required']">
+                    restaurantEmailId is required
+                </mat-error>
+                <mat-error *ngIf="emailId?.errors?.['emailId']">
+                    Enter proper restaurantEmailId address
+                </mat-error>
+            </mat-form-field>
+            <div class="restaurantNames">
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Restaurent Name" type="text" formControlName="restaurantName" color="primary" />
+                    <mat-error *ngIf="restaurantName?.errors?.['required']">
+                        restaurantName is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <br>
+
+            <mat-form-field appearance="fill" class="location">
+                <input matInput placeholder="Location" type="text" formControlName="location" />
+            </mat-form-field>
+
+            <br>
+            <mat-form-field appearance="fill" class="rating">
+                <input matInput placeholder="ratings" type="text" formControlName="ratings" />
+            </mat-form-field>
+            <br>
+            Restaurent Image  <input type="file" (change)="onFileChanged($event)" formControlName="file">
+            <br>
+            <div class="buttons">
+                <button mat-button color="secondary" type="submit" [disabled]="!registerForm.valid">Register</button>
+
+            </div>
+        </form>
+    </div>
+</mat-card>
+<br>
+ <br>
+ <br>
+<app-footer></app-footer>

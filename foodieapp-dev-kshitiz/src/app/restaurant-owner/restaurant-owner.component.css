@@ -1,0 +1,68 @@
+
+.hed {
+    text-align: center;
+}
+
+th {
+    padding: 25px;
+}
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+button {
+    background-color: white;
+    color: black;
+    margin-right: 30px;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+    font-style: italic;
+}
+
+.add-item {
+    margin-left: 93%;
+    margin-top: 5%;
+}
+
+/* .item {
+    width: 313px;
+    margin-left: 50px;
+    margin-top: 80px;
+} */
+
+.example-card {
+    max-width: 250px;
+    display: inline-flex;
+    flex-direction: row;
+    padding: 20px;
+    flex-wrap: wrap;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+mat-card-actions {
+    text-align: center;
+}
+
+img {
+    height: 200px;
+    width: 250px;
+    box-shadow: 0 0 10px#464646;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    margin-top: 40px;
+    text-align: center;
+    font-style: italic;
+}

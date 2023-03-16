@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="AuthenticationApp" />
+        <module name="AdminApp" />
+        <module name="UserApp" />
+        <module name="discoveryServer" />
+        <module name="gateway" />
+        <module name="mailService" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AdminApp" target="17" />
+      <module name="AuthenticationApp" target="17" />
+      <module name="discoveryServer" target="17" />
+      <module name="gateway" target="17" />
+      <module name="mailService" target="17" />
+      <module name="microservices" target="17" />
+      <module name="UserApp" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AdminApp" options="-parameters" />
+      <module name="AuthenticationApp" options="-parameters" />
+      <module name="UserApp" options="-parameters" />
+      <module name="discoveryServer" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="mailService" options="-parameters" />
+    </option>
+  </component>
+</project>

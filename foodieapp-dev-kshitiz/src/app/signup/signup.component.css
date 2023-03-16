@@ -1,0 +1,27 @@
+mat-card{
+  margin-left: 20%;
+  align-items: center;
+  width: 40%;
+  width: 550px;
+  margin: 150px auto 0 auto;
+  margin-top: 5%;
+  border: 2px solid rgb(235, 158, 158);
+  border-radius: 15px;
+  padding: 25px;
+  /* background-color:#f1d0cc; */
+  background-image: url("../../assets/photos/3784a0b2f83a599398db1afed3137d76.gif");
+  background-size: cover;
+  color: #000;
+  box-shadow: -2px 5px 15px rgb(71, 71, 71);
+ 
+}
+  mat-form-field{
+    font-size: medium;
+    background-color: transparent;
+    color: #000;
+    width: 100%;
+    filter: opacity(1);
+  }
+  .passwords{
+    display: flex;
+  }

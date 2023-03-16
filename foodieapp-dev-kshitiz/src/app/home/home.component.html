@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="container" style=" z-index: 99;" >
+    <mat-form-field appearance="fill" >
+        <mat-label>Search By</mat-label>
+        <mat-select [(ngModel)]="selectedValue">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-form-field" appearance="fill" >
+        <mat-label>{{filterType}}</mat-label>
+        <input matInput type="text" placeholder="Search" [(ngModel)]="value" >
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill" class="example-form-field"> 
+        <mat-label>Search By </mat-label>
+        <select matNativeControl required [(ngModel)]="filterType" >
+            <option value="restaurantName" >Restaurant Name</option>
+            <option value="location">location</option>
+            <option value="ratings">ratings</option>
+        </select>
+    </mat-form-field> -->
+
+</div>
+
+
+
+<div style="margin-left: 3%;">
+    <div *ngFor="let s of allRestorants|filter:value:selectedValue | paginate
+    : {
+        itemsPerPage: tableSize,
+        currentPage: page,
+        totalItems: count
+      };" class="example-card">
+        <div>
+            <a routerLink="/resturant-details/{{s.restaurantId}}" class="resturant-card">
+                <mat-card class="card" style="background-color: whitesmoke; color: black;text-align: center;"
+                    [class.mat-elevation-z6]="true">
+                    <mat-card-title><img mat-card-image
+                            src='data:image/jpeg;base64,{{s.restaurantImage}}'></mat-card-title>
+                    <mat-card-title>{{s.restaurantName|uppercase}}</mat-card-title>
+
+                    <mat-card-content style="text-align: center;">
+                        Location: {{s.location|titlecase}}
+                        <br>
+                        Rating: {{s.ratings|uppercase}}⭐
+                    </mat-card-content>
+                </mat-card>
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+</div>
+<app-footer></app-footer>

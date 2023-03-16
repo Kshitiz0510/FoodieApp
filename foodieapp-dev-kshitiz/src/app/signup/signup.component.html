@@ -1,0 +1,91 @@
+<app-header></app-header>
+<br>
+<br>
+<mat-card [class.mat-elevation-z6]="true">
+    <div>
+        <form [formGroup]="signupForm" (ngSubmit)="sendSignupData()">
+            <h1 style="font-size: x-large; color: #000; margin-left: 43%;">SignUp</h1>
+            <h1 class="text-danger">{{errormessage}}</h1>
+            <div class="restaurantNames">
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="User Name" type="text" formControlName="userName" color="primary" />
+                    <mat-error *ngIf="userName?.errors?.['required']">
+                        User Name is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <br>
+            <mat-form-field appearance="fill" class="emailId">
+                <input matInput placeholder="EmailId" type="text" formControlName="emailId" />
+                <mat-error *ngIf="emailId?.errors?.['required']">
+                    restaurantEmailId is required
+                </mat-error>
+                <mat-error *ngIf="emailId?.errors?.['emailId']">
+                    Enter proper restaurantEmailId address
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+
+            <div class="passwords">
+                <mat-form-field appearance="fill">
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" id="password"
+                        formControlName="password" />
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="password?.errors?.['required']">
+                        Password is required.
+                    </mat-error>
+                    <mat-error *ngIf="password?.errors?.['pattern']">
+                        Password Should have min 8 letter password, with at least a symbol,upper and lower case
+                        letters
+                        and a number.
+                    </mat-error>
+                </mat-form-field>
+
+                &nbsp;
+                &nbsp;
+                <mat-form-field appearance="fill">
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Confirm Password"
+                        id="confirmPassword" formControlName="confirmPassword">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+
+                    <mat-error *ngIf="signupForm.errors?.['mustMatch']===false">
+                        Password and Confirm Password should match.
+                    </mat-error>
+
+                </mat-form-field>
+            </div>
+            <br>
+            <mat-form-field appearance="fill" class="mobileNo">
+                <input matInput placeholder="MobileNo" type="number" formControlName="mobileNo" />
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="fill" class="address">
+                <input matInput placeholder="Address" type="text" formControlName="address" />
+            </mat-form-field>
+            <br>
+            <br>
+            <div style="background-color: white;">
+                Profile Picture
+                <input type="file" (change)="onFileChanged($event)" formControlName="file">
+            </div>
+            <br>
+            <br>
+            <div class="buttons">
+                <button mat-button color="secondary" type="submit" [disabled]="!signupForm.valid"
+                    style="background-color: rgb(241, 134, 63); width: 50%;font-size: large; color: #000; margin-left: 25%;">SignUp</button>
+
+            </div>
+        </form>
+    </div>
+</mat-card>
+<br>
+<br>
+<app-footer></app-footer>

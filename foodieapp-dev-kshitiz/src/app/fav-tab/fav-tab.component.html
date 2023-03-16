@@ -1,0 +1,20 @@
+<app-header></app-header>
+<br>
+<h1>favourite Menu</h1>
+<br>
+
+<div *ngFor="let item of userDetails.menu" class="example-card">
+    <mat-card style="background-color: whitesmoke; color: black;text-align: center;" [class.mat-elevation-z6]="true">
+      <mat-card-title><img mat-card-image src='data:image/jpeg;base64,{{item.itemImage}}'></mat-card-title>
+        <mat-card-title>{{item.itemName|uppercase}}</mat-card-title>
+        <mat-card-title>Price: {{item.itemPrice}}</mat-card-title>
+      <mat-card-actions>
+        <button mat-button (click)="removeFavorite(item)"><mat-icon>delete</mat-icon></button>
+        <button mat-button (click)="addToCart(item)"><mat-icon>shopping_cart</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+</div>
+<br>
+<br>
+<br>
+<app-footer></app-footer>

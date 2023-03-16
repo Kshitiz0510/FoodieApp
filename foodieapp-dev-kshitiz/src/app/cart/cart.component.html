@@ -1,0 +1,39 @@
+<app-header></app-header>
+<table border="1" class="table">
+  <thead class="hed">
+    <th>Item Name</th>
+    <th>Item Price</th>
+    <th>Item Quantity</th>
+    <th>Net Total</th>
+    <th>Cusine</th>
+    <th>Image</th>
+    <th>Option</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let v of userDetails.cart" class='hed'>
+      <td>{{v.itemName}}</td>
+      <td>{{v.itemPrice}}</td>
+      <td>{{v.quantity}}</td>
+      <td>{{v.quantity*v.itemPrice}}</td>
+      <td>{{v.cuisine}}</td>
+      <td><img class="circular--portrait" src='data:image/jpeg;base64,{{v.itemImage}}' alt=""></td>
+      <td>
+        <button mat-button (click)="addMenu(v)"><mat-icon>add</mat-icon></button>
+        <button mat-button (click)="removeMenu(v)"><mat-icon>remove</mat-icon></button>
+      </td>
+      
+    </tr>
+  </tbody>
+  <tfoot class='hed'>
+    <td>Total Price</td>
+    <td></td>
+    <td></td>
+    <td>{{totalValue}}</td>
+    <td></td>
+    <td></td>
+    <td>Place order 
+      <button mat-button (click)="placeOrder(userDetails.cart,totalValue)"><mat-icon>payment</mat-icon></button>
+    </td>
+  </tfoot>
+</table>
+<app-footer></app-footer>

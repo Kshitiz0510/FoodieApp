@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="container">
+  <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>{{filterType}}</mat-label>
+      <input matInput type="text" [(ngModel)]="value">
+      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+      </button>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-form-field">
+      <mat-label>Search By </mat-label>
+      <select matNativeControl required [(ngModel)]="filterType">
+          <option value="restaurantName">Restaurant Name</option>
+          <option value="location">location</option>
+          <option value="ratings">ratings</option>
+      </select>
+  </mat-form-field>
+</div>
+<h1>List Of Resturants Available</h1>
+
+<div>
+  <app-restaurent-card class="example-card" *ngFor="let resturantDetails of getAllResturantsDetails|filter:value:filterType"
+    [resturantDetails]="resturantDetails"></app-restaurent-card>
+</div>
+<app-footer></app-footer>

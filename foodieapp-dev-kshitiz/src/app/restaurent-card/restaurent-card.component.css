@@ -1,0 +1,30 @@
+/* 
+.card {
+  height: auto;
+} */
+/* .example-card {
+  max-width: 200px;
+  display: inline-flex;
+  flex-direction: row;
+  padding: 20px;
+  flex-wrap:wrap;
+} */
+/* .card{
+  height: 350px;
+  width: 250px;
+} */
+a{
+  text-decoration: none;
+}
+
+
+.example-card {
+  max-width: 300px;
+  height: 350px;
+
+  margin-right: 50px;
+}
+img{
+  height: 200px;
+  width: 250px;
+}

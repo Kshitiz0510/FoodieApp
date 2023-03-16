@@ -1,0 +1,156 @@
+<app-header></app-header>
+
+<div class="container">
+    <mat-form-field  appearance="fill" class="search">
+        <mat-label>Search By</mat-label>
+        <mat-select [(ngModel)]="selectedValue">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill"  class="example-form-field search" >
+        <mat-label>{{filterType}}</mat-label>
+        <input matInput type="text" placeholder="Search" [(ngModel)]="value" >
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+
+<mat-card class="expansion">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                New Restaurant Requests
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel *ngFor="let n of allNewRestorants">
+            <mat-expansion-panel-header (focus)='setValuesss(n)'>
+                <mat-panel-title>
+                    {{n.emailId}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{n.restaurantName}}
+                    {{n.location}}
+                     {{n.ratings}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <form [formGroup]="restaurantDetailForm" (ngSubmit)="sendSignupData()">
+                <h1>Add Restaurant</h1>
+                <mat-form-field appearance="fill">
+                    <mat-label>Restaurant Name</mat-label>
+                    <input matInput placeholder="restaurant Name" type="text" formControlName="restaurantName" />
+                    <mat-error *ngIf="restaurantName?.errors?.['required']">
+                        restaurantName is required.
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="restaurantEmailId">
+                    <mat-label>Restaurant EmailId</mat-label>
+                    <input matInput placeholder="emailId" type="text" formControlName="emailId" />
+                    <mat-error *ngIf="emailId?.errors?.['required']">
+                        restaurantEmailId is required
+                    </mat-error>
+                    <mat-error *ngIf="emailId?.errors?.['emailId']">
+                        Enter proper restaurantEmailId address
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="location">
+                    <mat-label>location</mat-label>
+                    <input matInput placeholder="location" type="text" formControlName="location" />
+                    <mat-error *ngIf="location?.errors?.['required']">
+                        location is required
+                    </mat-error>
+                    <mat-error *ngIf="location?.errors?.['location']">
+                        Enter proper location address
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <button mat-button color="secondary" type="submit"><mat-icon>add</mat-icon></button>
+            </form>
+            <button mat-button color="secondary"
+                (click)="deleteNewRestaurant(n.emailId)"><mat-icon>delete</mat-icon></button>
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+</mat-card>
+
+<mat-slide-toggle [(ngModel)]="toggle" style="margin-left: 10%; color: red;">list view</mat-slide-toggle>
+
+<mat-divider></mat-divider>
+<div style="margin-left: 3%;" *ngIf="!toggle">
+    <div *ngFor="let s of allRestorants|filter:value:selectedValue | paginate
+    : {
+        itemsPerPage: tableSize,
+        currentPage: page,
+        totalItems: count
+      };" class="example-card">
+        <div class="resturant-card">
+            <mat-card class="card" style="background-color: whitesmoke; color: black;text-align: center;" [class.mat-elevation-z6]="true">
+                <mat-card-title ><img  mat-card-image src='data:image/jpeg;base64,{{s.restaurantImage}}'></mat-card-title>
+              
+                    <mat-card-title>{{s.restaurantName|uppercase}}</mat-card-title>
+               
+                <mat-card-content>
+                   
+                    <mat-card-content> RestaurantId: {{s.restaurantId|uppercase}} </mat-card-content>
+                    <mat-card-content>Location: {{s.location|titlecase}}</mat-card-content>
+                    <mat-card-content> Rating: {{s.ratings|uppercase}}⭐</mat-card-content>
+                    <mat-card-content> EmailId: {{s.emailId}}</mat-card-content>
+               
+                     </mat-card-content>
+
+                     <mat-card-content style="text-align: center; padding-bottom: -2px;">
+                        <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
+                            (click)="deleteRestaurent(s.restaurantId,s.emailId)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-card-content>
+                
+            </mat-card>
+        </div>
+    </div>
+</div>
+<br>
+
+<table border="1px solid black" class="table" *ngIf="toggle" [class.mat-elevation-z6]="true">
+    <thead class="hed">
+        <th>S.no</th>
+        <th>Restaurant Id</th>
+        <th>Resturant Name</th>
+        <th>Owner's Email</th>
+        <th>Resturant Location</th>
+        <th>Restaurant rating⭐</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of allRestorants|filter:value:selectedValue | paginate
+        : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          }; let i=index;" class='hed'>
+            <td>{{i+1}}</td>
+            <td>{{s.restaurantId|uppercase}}</td>
+            <td>{{s.restaurantName|uppercase}}</td>
+            <td>{{s.emailId}}</td>
+            <td>{{s.location|titlecase}}</td>
+            <td>{{s.ratings|uppercase}}</td>
+            <td>
+                <div class="example-button-row">
+                    <button mat-raised-button aria-label="Example icon button with a delete icon"
+                        (click)="deleteRestaurent(s.restaurantId,s.emailId)" > Delete </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+<div class="d-flex justify-content-center">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+</div>
+<br>
+<app-footer></app-footer>
+<!-- (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false" -->

@@ -1,0 +1,73 @@
+<app-header></app-header>
+<h1 style="color: rgb(9, 51, 88); font-family: cursive;">{{owerRestaurent.restaurantName|uppercase}} </h1>
+
+<div>
+    <mat-slide-toggle [(ngModel)]="toggle" style="margin-left: 10%;">list view</mat-slide-toggle>
+    <button mat-fab matTooltip="Primary" color="primary" aria-label="Example fab with a heart icon"
+        (click)="addMenu(owerRestaurent.restaurantId)" style="margin-left: 90%;">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+<div *ngIf="!toggle" style="margin-left: 3%;">
+    <div *ngFor="let menus of owerRestaurent.menuList|filter:'':'itemName'| paginate
+    : {
+        itemsPerPage: tableSize,
+        currentPage: page,
+        totalItems: count
+      };let i=index" class="example-card">
+
+      <mat-card style="background-color: whitesmoke; color: black;text-align: center;" [class.mat-elevation-z6]="true">
+        <mat-card-title><img mat-card-image src='data:image/jpeg;base64,{{menus.itemImage}}'></mat-card-title>
+          <mat-card-title>{{menus.itemName|uppercase}}</mat-card-title>
+          <mat-card-content>Price: {{menus.itemPrice}}</mat-card-content>
+          <mat-card-content class="card-content">Item Id : {{menus.itemId}}</mat-card-content>
+            <mat-card-content class="card-content">Cuisine : {{menus.cuisine}}</mat-card-content>
+            <!-- <mat-card-content class="card-content">Rating : {{menus.rating}}</mat-card-content> -->
+            <p>Rating: <span class="rating-star">{{'★'.repeat(math.round(menus.rating)) }}&nbsp;{{menus.rating}}</span></p>
+            <mat-card-actions>
+            <button mat-button color="secondary"
+                (click)="deleteMenu(menus,menus.itemId)"><mat-icon>delete</mat-icon></button>
+            <button mat-button color="secondary" (click)="getEditMenu(menus)"><mat-icon>edit</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+</div>
+
+<table border="1" class="table" *ngIf="toggle" [class.mat-elevation-z10]="true">
+    <thead class="hed">
+        <th>Item Name</th>
+        <th>Item Price</th>
+        <th>Item Cusine</th>
+        <th>Rating</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let menus of owerRestaurent.menuList|filter:'':'itemName' | paginate
+        : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };let i=index" class="example-card" class='hed'>
+            <td>{{menus.itemName}}</td>
+            <td>{{menus.itemPrice}}</td>
+            <td>{{menus.cuisine}}</td>
+            <td>{{menus.rating}}</td>
+            <td>
+                <div class="example-button-row">
+                    <button mat-raised-button (click)="deleteMenu(menus,menus.itemId)">Delete</button>
+                    <button mat-raised-button (click)="getEditMenu(menus)">Edit</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+</div>
+
+<app-footer></app-footer>

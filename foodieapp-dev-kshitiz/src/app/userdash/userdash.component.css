@@ -1,0 +1,17 @@
+
+
+.example-card {
+  max-width: 200px;
+  display: inline-flex;
+  flex-direction: row;
+  margin: 50px;
+  flex-wrap: wrap;
+}
+.container{
+  margin-top: -130px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+.mat-form-field{
+  width: 15%;
+}

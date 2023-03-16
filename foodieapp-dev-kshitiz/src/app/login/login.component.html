@@ -1,0 +1,21 @@
+<app-header></app-header>
+<mat-card [class.mat-elevation-z6]="true">
+    <div class="text-danger">{{errormessage}}</div>
+    <div >
+        <h1>Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="sendLoginInfo()">
+            <mat-form-field appearance="fill" >
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="emailId"/> 
+                <mat-hint align="end" *ngIf="emailId.invalid"> </mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password"/> 
+                <mat-hint align="end" *ngIf="password.invalid"></mat-hint>
+            </mat-form-field>
+            <button mat-button color="secondary" type="submit" [disabled]="!loginForm.valid" style="background-color: rgb(241, 134, 63); width: 50%;font-size: large; color: #000; margin-left: 25%;">Login</button>
+        </form>
+    </div>
+</mat-card>
+<app-footer></app-footer>
